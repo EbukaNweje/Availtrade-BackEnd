@@ -54,6 +54,11 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: 0.00
   },
+  
+  totalEarned: {
+    type: String,
+    default: 0.00
+  },
 
   accountBalance: {
     type: String,
