@@ -50,6 +50,21 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
 
+  lastDeposit: {
+    type: String,
+    default: 0.00
+  },
+
+  totalDeposit: {
+    type: String,
+    default: 0.00
+  },
+  
+  startUpDeposit: {
+    type: String,
+    default: 0.00
+  },
+
   modeOfInvestment: {
     type: String,
     required: true,
