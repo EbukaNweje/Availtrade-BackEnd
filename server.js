@@ -11,7 +11,7 @@ mongoose.connect(Db, {
     console.log("MongoDB Connected!")
 })
 
-const app = require("./app")
+const app = require("./App")
 
 app.listen(process.env.PORT || 5000, ()=>{
     console.log("Conneted")
