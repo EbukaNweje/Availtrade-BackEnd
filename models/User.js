@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
+  
   firstName: {
     type: String,
     required: true,
@@ -25,11 +26,6 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
 
-  address: {
-    type: String,
-    required: true,
-  },
-
   gender: {
     type: String,
     required: true,
@@ -45,9 +41,8 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
 
-  plan: {
+  referenceId: {
     type: String,
-    required: true,
   },
 
   lastDeposit: {
@@ -65,18 +60,13 @@ const UserSchema = new mongoose.Schema({
     default: 0.00
   },
 
-  modeOfInvestment: {
-    type: String,
-    required: true,
-  },
+  // account: {
+  //   type: [String],
+  // },
 
-  account: {
-    type: [String],
-  },
-
-  referenceId: {
-    type: String,
-  },
+  // referenceId: {
+  //   type: String,
+  // },
   
   verify: {
     type: Boolean,
@@ -86,7 +76,7 @@ const UserSchema = new mongoose.Schema({
   isAdmin: {
     // Role of user it will be (normal or admin )
     type: Boolean,
-    default: true,
+    default: false,
   },
 
 }, {timestamps: true});

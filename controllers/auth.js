@@ -40,9 +40,6 @@ exports.register = async (req, res, next)=>{
             email: req.body.email,
             gender: req.body.gender,
             phoneNumber: req.body.phoneNumber,
-            modeOfInvestment: req.body.modeOfInvestment,
-            address: req.body.address,
-            plan: req.body.plan,
             referenceId: req.body.referenceId
          })
          const token = jwt.sign({id:newUser._id, isAdmin:newUser.isAdmin}, process.env.JWT, {expiresIn: "1d"})
