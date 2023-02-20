@@ -98,7 +98,6 @@ exports.login = async (req, res, next)=>{
     try{
         const Users = await User.findOne({email: req.body.email})
         if(!Users) return next(createError(404, "User not found!"))
-        // console.log(User.password)
 
         const isPasswordCorrect = await bcrypt.compare(req.body.password, Users.password)
         if(!isPasswordCorrect) return next(createError(400, "Wrong password or username"))
