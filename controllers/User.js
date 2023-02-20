@@ -15,7 +15,7 @@ exports.getoneUser = async (req, res, next) =>{
     }
 }
 
-/* exports.allUserData = async (req, res, next) =>{
+exports.allUserData = async (req, res, next) =>{
     try {
         const UserDatas = await User.find()
         
@@ -61,4 +61,3 @@ exports.updateoneUser = async (req, res, next) =>{
         next(err)
     }
 }
- */
