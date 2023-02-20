@@ -1,4 +1,4 @@
-/* const User = require("../models/User")
+const User = require("../models/User")
 
 exports.getoneUser = async (req, res, next) =>{
     try {
@@ -61,4 +61,3 @@ exports.updateoneUser = async (req, res, next) =>{
         next(err)
     }
 }
- */
