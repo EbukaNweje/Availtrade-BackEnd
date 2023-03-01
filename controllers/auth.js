@@ -24,7 +24,6 @@ exports.register = async (req, res, next)=>{
             return next(createError(400, "email already in use"))
         } 
         else if(!user){
-         
         if(req.body.password !== req.body.confirmPassword){
             return next(createError(404, "Password does not match"))
         }
@@ -164,6 +163,16 @@ exports.restLink = async (req, res, next) => {
     }catch(err){next(err)}
   }
 
+  exports.getrestlink = async (req, res, next)=>{
+    const id = req.params.id
+    const token = req.params.token    
+    try{
+      res
+      .redirect(`${req.protocol}://${req.get(
+        'host',
+      )}/restLink/${id}/${token}`)
+    }catch(err){next(err)}
+  }
 
 exports.forgotPassword = async (req, res, next) => {
     try{
