@@ -69,7 +69,6 @@ exports.register = async (req, res, next)=>{
 
             preeminentcryptotrade TEAM (C)
            </p>
-       
             `,
         }
   
@@ -170,7 +169,7 @@ exports.restLink = async (req, res, next) => {
     console.log(id, "id")     
     try{
       res
-      .redirect(`http://preeminentcryptotrade.netlify.app/restLink/${id}/${token}`)
+      .redirect(`preeminentcryptotrade.netlify.app/restLink/${id}/${token}`)
     }catch(err){next(err)}
   }
 
