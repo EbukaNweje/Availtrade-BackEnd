@@ -140,3 +140,62 @@ exports.login = async (req, res, next)=>{
         next(err)
     }
 }
+
+exports.restLink = async (req, res, next) => {
+    try{
+      const id = req.params.id
+      const token = req.params.token
+     
+    jwt.verify(token, process.env.JWT, async (err) => {
+      if (err) {
+        return next(createError(403, "Token not valid"));
+      }
+    });
+    const userpaassword = await User.findById(id)
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(req.body.password, salt)
+    userpaassword.password = hash
+    userpaassword.save()
+    res.status(200).json({
+        status: 'success',
+        message: 'you have successfuly change your password',
+      })
+  
+    }catch(err){next(err)}
+  }
+
+
+exports.forgotPassword = async (req, res, next) => {
+    try{
+        const userEmail = await User.findOne({email: req.body.email})
+        // console.log(userEmail)
+      if (!userEmail) return next(createError(404, 'No user with that email'))
+      const token = jwt.sign({ id: userEmail._id }, process.env.JWT, {
+        expiresIn: "10m",
+      });
+      const resetURL = `${req.protocol}://${req.get(
+            'host',
+          )}/api/restLink/${userEmail._id}/${token}`
+
+          const message = `Forgot your password? Submit patch request with your new password to: ${resetURL}.
+           \nIf you didnt make this request, simply ignore. Password expires in 10 minutes`
+
+          const mailOptions ={
+            from: process.env.USER,
+            to: userEmail.email,
+            subject: 'Your password reset token is valid for 10 mins',
+            text: message,
+        }
+        transporter.sendMail(mailOptions,(err, info)=>{
+            if(err){
+                console.log(err.message);
+            }else{
+                console.log("Email has been sent to your inbox", info.response);
+            }
+        })
+          res.status(200).json({
+            status: 'success',
+            message: 'Link sent to email!',
+          })
+    }catch(err){next(err)}
+}
