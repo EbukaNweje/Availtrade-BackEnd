@@ -165,14 +165,15 @@ exports.restLink = async (req, res, next) => {
 
   exports.getrestlink = async (req, res, next)=>{
     const id = req.params.id
-    const token = req.params.token    
+    const token = req.params.token
+    console.log(token, "token")
+    console.log(id, "id")     
     try{
       res
-      .redirect(`${req.protocol}://${req.get(
-        'host',
-      )}/restLink/${id}/${token}`)
+      .redirect(`http://localhost:3000/restLink/${id}/${token}`)
     }catch(err){next(err)}
   }
+
 
 exports.forgotPassword = async (req, res, next) => {
     try{
