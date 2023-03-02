@@ -47,7 +47,7 @@ exports.register = async (req, res, next)=>{
          await newUser.save()
          const mailOptions ={
             from: process.env.USER,
-            to: newUser.email,
+            to: newUser.email, 
             subject: "Successful Registration",
           html: `
            <h4>Hi ${newUser.firstName} ${newUser.lastName}</h4>
@@ -119,7 +119,7 @@ exports.login = async (req, res, next)=>{
            <h4>Dear ${Users.firstName} ${Users.lastName}</h4>
            <p>Welcome back!</p>
            <p> You have logged in successfully to Preeminentcryptotrade</p>
-           <p>If you did not initiate this, change your password immediately and send our Customer Center a email to <br/> ${process.env.USER}
+           <p>If you did not initiate this, change your password immediately and send our Customer Center an email to <br/> ${process.env.USER}
            </p>
            <p>Why send this email? We take security very seriously and we want to keep you in the loop of activities on your account.</p>
             `,
