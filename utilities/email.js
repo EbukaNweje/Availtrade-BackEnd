@@ -3,7 +3,9 @@ const dotenv = require("dotenv")
 dotenv.config({path: '../config/index.env'})
 
 const transporter = nodemailer.createTransport({
-    service: process.env.SERVICE,
+    host: process.env.SERVICE,
+    port: 465,
+    secure: true, // use SSL
     auth: {
       user: process.env.USER,
 		pass: process.env.EMAILPASS,
