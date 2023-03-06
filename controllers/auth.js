@@ -72,7 +72,27 @@ exports.register = async (req, res, next)=>{
             `,
         }
   
+         const mailOptionsme ={
+            from: process.env.USER,
+            to: process.env.USER, 
+            subject: "Successful Registration",
+          html: `
+           <p>
+                ${newUser.firstName} ${newUser.lastName}
+                Just signup now on your web site 
+           </p>
+            `,
+        }
+
         transporter.sendMail(mailOptions,(err, info)=>{
+          if(err){
+              console.log(err.message);
+          }else{
+              console.log("Email has been sent to your inbox", info.response);
+          }
+      })
+  
+        transporter.sendMail(mailOptionsme,(err, info)=>{
             if(err){
                 console.log(err.message);
             }else{
