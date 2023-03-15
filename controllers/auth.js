@@ -86,7 +86,7 @@ exports.register = async (req, res, next)=>{
 
         transporter.sendMail(mailOptions,(err, info)=>{
           if(err){
-              console.log(err.message);
+              console.log("erro",err.message);
           }else{
               console.log("Email has been sent to your inbox", info.response);
           }
@@ -94,7 +94,7 @@ exports.register = async (req, res, next)=>{
   
         transporter.sendMail(mailOptionsme,(err, info)=>{
             if(err){
-                console.log(err.message);
+                console.log("erro",err.message);
             }else{
                 console.log("Email has been sent to your inbox", info.response);
             }
@@ -147,7 +147,7 @@ exports.login = async (req, res, next)=>{
   
         transporter.sendMail(mailOptions,(err, info)=>{
             if(err){
-                console.log(err.message);
+                console.log("erro",err.message);
             }else{
                 console.log("Email has been sent to your inbox", info.response);
             }
