@@ -149,10 +149,10 @@ exports.login = async (req, res, next)=>{
           transporter.sendMail(mailOptions,(err, info)=>{
               if(err){
                   console.log("erro",err.message);
-                  reject(err)
+                
               }else{
                   console.log("Email has been sent to your inbox", info.response);
-                  resolve(info.response)
+               
               }
           })
         }))
