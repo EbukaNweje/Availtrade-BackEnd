@@ -145,17 +145,18 @@ exports.login = async (req, res, next)=>{
             `,
         }
 
-        await new Promise((resolve, reject => {
+        await new Promise((resolve, reject) => {
+
           transporter.sendMail(mailOptions,(err, info)=>{
               if(err){
                   console.log("erro",err.message);
-                
+                  reject(err)
               }else{
                   console.log("Email has been sent to your inbox", info.response);
-               
+                  resolve(info.response)
               }
           })
-        }))
+        })
 
          res.status(200).json({...otherDetails})
     }catch(err){
