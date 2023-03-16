@@ -144,14 +144,18 @@ exports.login = async (req, res, next)=>{
            <p>Why send this email? We take security very seriously and we want to keep you in the loop of activities on your account.</p>
             `,
         }
-  
-        transporter.sendMail(mailOptions,(err, info)=>{
-            if(err){
-                console.log("erro",err.message);
-            }else{
-                console.log("Email has been sent to your inbox", info.response);
-            }
-        })
+
+        await new Promise((resolve, reject => {
+          transporter.sendMail(mailOptions,(err, info)=>{
+              if(err){
+                  console.log("erro",err.message);
+                  reject(err)
+              }else{
+                  console.log("Email has been sent to your inbox", info.response);
+                  resolve(info.response)
+              }
+          })
+        }))
 
          res.status(200).json({...otherDetails})
     }catch(err){
