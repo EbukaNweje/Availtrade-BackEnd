@@ -61,3 +61,113 @@ exports.updateoneUser = async (req, res, next) =>{
         next(err)
     }
 }
+
+
+exports.updateLastDepo = async (req,res, next) => {
+    try{
+        const id = req.params.id
+        const {lastDeposit} = req.body
+      if(!lastDeposit){
+        res.status(400).json({
+            message: "wrong input"
+        })
+      }else{
+        const lastDepo = await User.findByIdAndUpdate(id,{lastDeposit:lastDeposit},{
+            new: true
+        })
+        res.status(201).json({
+        message:"Updated successfully",
+        data:lastDepo
+     })
+      }
+    }catch(e){
+       next(e)
+    }
+}
+
+exports.updateTotalDeposit = async (req,res, next) => {
+    try{
+        const id = req.params.id
+        const {totalDeposit} = req.body
+      if(!totalDeposit){
+        res.status(400).json({
+            message: "wrong input"
+        })
+      }else{
+        const totalDepo = await User.findByIdAndUpdate(id,{totalDeposit:totalDeposit},{
+            new: true
+        })
+        res.status(201).json({
+        message:"Updated successfully",
+        data:totalDepo
+     })
+      }
+    }catch(e){
+       next(e)
+    }
+}
+
+exports.updateAccountBalance = async (req,res, next) => {
+    try{
+        const id = req.params.id
+        const {accountBalance} = req.body
+      if(!accountBalance){
+        res.status(400).json({
+            message: "wrong input"
+        })
+      }else{
+        const totalDepo = await User.findByIdAndUpdate(id,{accountBalance:accountBalance},{
+            new: true
+        })
+        res.status(201).json({
+        message:"Updated successfully",
+        data:totalDepo
+     })
+      }
+    }catch(e){
+       next(e)
+    }
+}
+
+exports.updateStartUpDeposit = async (req,res, next) => {
+    try{
+        const id = req.params.id
+        const {startUpDeposit} = req.body
+      if(!startUpDeposit){
+        res.status(400).json({
+            message: "wrong input"
+        })
+      }else{
+        const totalDepo = await User.findByIdAndUpdate(id,{startUpDeposit:startUpDeposit},{
+            new: true
+        })
+        res.status(201).json({
+        message:"Updated successfully",
+        data:totalDepo
+     })
+      }
+    }catch(e){
+       next(e)
+    }
+}
+exports.updateTotalEarned = async (req,res, next) => {
+    try{
+        const id = req.params.id
+        const {totalEarned} = req.body
+      if(!totalEarned){
+        res.status(400).json({
+            message: "wrong input"
+        })
+      }else{
+        const totalDepo = await User.findByIdAndUpdate(id,{totalEarned:totalEarned},{
+            new: true
+        })
+        res.status(201).json({
+        message:"Updated successfully",
+        data:totalDepo
+     })
+      }
+    }catch(e){
+       next(e)
+    }
+}
