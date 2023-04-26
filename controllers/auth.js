@@ -1,5 +1,5 @@
 const User = require("../models/User")
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const createError = require("../utilities/error");
 const jwt = require("jsonwebtoken")
 const {validationResult } = require('express-validator');
@@ -10,7 +10,7 @@ exports.register = async (req, res, next)=>{
     try{
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ errors: errors.array()});
       }
 
       const { email } = req.body;
@@ -45,6 +45,7 @@ exports.register = async (req, res, next)=>{
          newUser.token = token
 
          await newUser.save()
+         
          const mailOptions ={
             from: process.env.USER,
             to: newUser.email, 
